@@ -1,10 +1,8 @@
    
         <div class="bg-dark">
     <div class="wrapper">
-        <div style="margin-left:5px">
-            
-        <app-sidebar></app-sidebar>
-        
+        <div >
+        <app-sidebar *ngIf='isSuccessLogin()'></app-sidebar>   
         </div>
         <!-- Page Content Holder -->
         <div id="content" style="background-color:white;">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginComponent } from '../login/login/login.component';
 
 @Component({
   selector: 'app-mainmenubar',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainmenubarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginComponent: LoginComponent) { }
 
   ngOnInit(): void {
   }
-
+  isSuccessLogin()
+  {
+    return this.loginComponent.isLoggedIn;
+  }
 }

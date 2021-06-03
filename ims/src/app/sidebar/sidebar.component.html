@@ -1,7 +1,8 @@
 <nav id="sidebar">
   <app-sidebarwelcomemsg></app-sidebarwelcomemsg>
-  <!-- <app-sidebardirector></app-sidebardirector> -->
-  <!-- <app-sidebarstudent></app-sidebarstudent> -->
-  <!-- <app-sidebarsuperviser></app-sidebarsuperviser> -->
-  <app-sidebarteacher></app-sidebarteacher>
+
+  <app-sidebardirector *ngIf='sidebarDecider==="director"'></app-sidebardirector>
+   <app-sidebarstudent *ngIf='sidebarDecider==="student"'></app-sidebarstudent> 
+  <app-sidebarsuperviser *ngIf='sidebarDecider==="supverviser"'></app-sidebarsuperviser>
+  <app-sidebarteacher *ngIf='sidebarDecider==="teacher"'></app-sidebarteacher>
 </nav>

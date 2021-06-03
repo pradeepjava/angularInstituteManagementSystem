@@ -14,6 +14,7 @@ import { CollapseComponent } from './mainmenubar/collapse/collapse.component';
 import { DisplaycontentComponent } from './displaycontent/displaycontent.component';
 import { HomedisplayComponent } from './displaycontent/homedisplay/homedisplay.component';
 import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login/login.component';
 
 
 @NgModule({
@@ -24,13 +25,13 @@ import { FooterComponent } from './footer/footer.component';
     SidebarwelcomemsgComponent,SidebarComponent,
      SidebarsuperviserComponent, SidebarteacherComponent,
       MainmenubarComponent, CollapseComponent, DisplaycontentComponent, 
-      HomedisplayComponent, FooterComponent
+      HomedisplayComponent, FooterComponent, LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
