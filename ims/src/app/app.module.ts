@@ -15,6 +15,10 @@ import { DisplaycontentComponent } from './displaycontent/displaycontent.compone
 import { HomedisplayComponent } from './displaycontent/homedisplay/homedisplay.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { CoursesComponent } from './courses/courses.component';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -25,7 +29,7 @@ import { LoginComponent } from './login/login/login.component';
     SidebarwelcomemsgComponent,SidebarComponent,
      SidebarsuperviserComponent, SidebarteacherComponent,
       MainmenubarComponent, CollapseComponent, DisplaycontentComponent, 
-      HomedisplayComponent, FooterComponent, LoginComponent
+      HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent
   ],
   imports: [
     BrowserModule,

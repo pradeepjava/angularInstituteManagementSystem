@@ -8,19 +8,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link colorWhite"  href="#">Home</a>
+                    <a class="nav-link colorWhite"  routerLink="/home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link colorWhite" href="#">About Us</a>
+                    <a class="nav-link colorWhite" routerLink="/aboutus">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link colorWhite" href="#">Courses</a>
-                </li>
-                <li class="nav-item" *ngIf='!isSuccessLogin()'>
-                    <a class="nav-link colorWhite" href="#">Login</a>
+                    <a class="nav-link colorWhite" routerLink="/courses">Courses</a>
                 </li>
                 <li class="nav-item">
-                    <a *ngIf='isSuccessLogin()' class="nav-link colorWhite" href="#">Logout</a>
+                    <a style=" z-index: 1;" class="nav-link colorWhite" *ngIf='!isSuccessLogin()' routerLink="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a *ngIf='isSuccessLogin()' class="nav-link colorWhite" routerLink="logout">Logout</a>
                 </li>
             </ul>
         </div>
