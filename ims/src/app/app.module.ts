@@ -19,6 +19,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { CoursesComponent } from './courses/courses.component';
 import { ErrorComponent } from './error/error.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ErrorComponent } from './error/error.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [LoginComponent],
   bootstrap: [AppComponent]

@@ -9,13 +9,13 @@ import { LoginComponent } from './login/login/login.component';
 
 export class AppComponent {
 
- constructor(private loginComponent:LoginComponent)
+ constructor()
  {
 
  }
   title = 'ims';
   isSuccessLogin()
   {
-    return this.loginComponent.isLoggedIn;
+    return LoginComponent.isLoggedIn;
   }
 }

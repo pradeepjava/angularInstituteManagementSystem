@@ -1,24 +1,32 @@
-<div align="center">
-<div align="center" style="width:25%; border:1px solid black; background-color: grey;margin-top:50px; padding: 10px;">
+<div class="container">
+<div class="row">
+    <div class="col-md-3"></div>
+    
+   
+
+<div  class="col-md-6"  align="center" style="border:1px solid black; background-color: grey;margin-top:50px; padding:25px">
 <h3>Login</h3>
-<br>
-<table style="width:50">
+
+<p *ngIf="invalidLogin" style="color:crimson; font-size: 15px;">Invalid username or password</p>
+<table style="border-collapse: collapse;
+width: 40%;" class="table">
+    <tbody>
 <tr>
     <td align="right">
-     Login   
+     Login*   
     </td>
     <td>&nbsp;</td>
     <td>
-    <input type="text" />
+    <input type="text" [(ngModel)]="username" />
     </td>
 </tr>
 <tr>
     <td align="right">
-     Password   
+     Password*  
     </td>
     <td>&nbsp;</td>
     <td>
-    <input type="password" />
+    <input type="password" [(ngModel)]="password" />
     </td>
     <tr>
         <td align="right">
@@ -26,10 +34,12 @@
         </td>
         <td>&nbsp;</td>
         <td align="right" style="padding: 5px;">
-        <input type="button" class="btn btn-success" style="padding: 10px;" value="Login"  />
+        <input type="button" (click)="authenticateUser(username,password)" class="btn btn-success" style="padding: 10px;" value="Login"  />
         </td>
 </tr>
-
+</tbody>
 </table>
+</div>
+<div class="col-md-3"></div>
 </div>
 </div>

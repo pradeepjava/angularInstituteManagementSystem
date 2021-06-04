@@ -8,12 +8,12 @@ import { LoginComponent } from '../login/login/login.component';
 })
 export class MainmenubarComponent implements OnInit {
 
-  constructor(private loginComponent: LoginComponent) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
   isSuccessLogin()
   {
-    return this.loginComponent.isLoggedIn;
+    return LoginComponent.isLoggedIn;
   }
 }

@@ -13,7 +13,7 @@ own css
 color:yellow
 }
 a:visited {
-    color: pink;
+    color: white;
   }
 /*
 own css done.
@@ -41,20 +41,6 @@ a, a:hover, a:focus {
     transition: all 0.3s;
 }
 
-
-/* .navbar {
-background: #6d7fcc;
-color:white;
-padding: 15px 10px;
-height:76px;
-border: none;
-border-radius: 0;
-margin-bottom: 40px;
-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-display:-ms-flexbox;display:flex;
-position:relative
-   
-} */
 .navbar{
     padding: 40px 40px;
     background: #6d7fcc;

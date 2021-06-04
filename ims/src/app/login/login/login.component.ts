@@ -7,12 +7,27 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 })
 
 export class LoginComponent implements OnInit {
-
-  @Output() isLoggedIn: boolean=false;
+  username: string = ''
+  password: string = ''
+  invalidLogin: boolean = false;
+  static isLoggedIn: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  authenticateUser(user:string, pass:string) {
+    if (user.length == 0 || pass.length == 0) {
+      this.invalidLogin = true;
+      LoginComponent.isLoggedIn=false;
+      console.log(LoginComponent.isLoggedIn)
+    }
+    else{
+      this.invalidLogin=false;
+      LoginComponent.isLoggedIn=true;
+      console.log(user,pass);
+      console.log(LoginComponent.isLoggedIn)
+    }
+  }
 
 }
