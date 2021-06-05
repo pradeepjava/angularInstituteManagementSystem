@@ -17,7 +17,7 @@ export class AppComponent {
   title = 'ims';
   isSuccessLogin()
   {
-    return LoginComponent.isLoggedIn;
+    return localStorage.length>0
   }
 
 }

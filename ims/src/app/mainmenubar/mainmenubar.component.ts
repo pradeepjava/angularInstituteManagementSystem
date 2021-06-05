@@ -17,10 +17,10 @@ this.loginService=loginService;
   }
   isSuccessLogin()
   {
-    return this.loginService?.isLoggedIn();
+   return localStorage.length>0;
   }
   clearSession()
   {
-    sessionStorage.clear();
+    localStorage.clear();
   }
 }

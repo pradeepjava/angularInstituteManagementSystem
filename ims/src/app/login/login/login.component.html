@@ -17,7 +17,7 @@ width: 40%;" class="table">
     </td>
     <td>&nbsp;</td>
     <td>
-    <input type="text" id="username" name="username" />
+    <input type="text" [(ngModel)]="user" />
     </td>
 </tr>
 <tr>
@@ -26,7 +26,7 @@ width: 40%;" class="table">
     </td>
     <td>&nbsp;</td>
     <td>
-    <input type="password" id="password" name="password"/>
+    <input type="password" [(ngModel)]="pass" />
     </td>
     <tr>
         <td align="right">
@@ -34,7 +34,7 @@ width: 40%;" class="table">
         </td>
         <td>&nbsp;</td>
         <td align="right" style="padding: 5px;">
-        <input type="button" (click)="authenticateUser('username','password')" class="btn btn-success" style="padding: 10px;" value="Login"  />
+        <input type="button" (click)="authenticateUser('user','pass')" class="btn btn-success" style="padding: 10px;" value="Login"  />
         </td>
 </tr>
 </tbody>

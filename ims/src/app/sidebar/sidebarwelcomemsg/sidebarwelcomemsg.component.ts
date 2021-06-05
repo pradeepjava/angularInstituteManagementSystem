@@ -8,22 +8,24 @@ import { LoginserviceService } from 'src/app/service/loginservice.service';
   styleUrls: ['./sidebarwelcomemsg.component.css']
 })
 export class SidebarwelcomemsgComponent implements OnInit {
- username:string='aa'
- role : string=''
 
   constructor() {
-
-    
-   }
+  }
 
   ngOnInit(): void {
-    console.log("username")
-    console.log(LoginComponent.userName)
-    LoginComponent.userName
-    
   }
-  getUser()
-  {
-    LoginComponent.userName
+  assignuser(): string {
+    let l = localStorage.getItem("name");
+    if (l != null) {
+      return l
+    }
+    return ''
+  }
+  assignedrole(): string {
+    let l = localStorage.getItem("role");
+    if (l != null) {
+      return l
+    }
+    return ''
   }
 }

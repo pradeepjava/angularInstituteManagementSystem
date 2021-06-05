@@ -8,7 +8,8 @@ export class LoginserviceService {
     if (user.length == 0 || pass.length == 0) {
     sessionStorage.setItem("name", user)
     sessionStorage.setItem("role", pass)
-  
+    let a=sessionStorage.getItem("name");
+    console.log(a);  
     return this.isLoggedIn();
     }
     return this.doUserLogout();

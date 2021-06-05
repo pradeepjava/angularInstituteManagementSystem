@@ -18,7 +18,7 @@ export class CollapseComponent implements OnInit {
    }
   ngOnInit(): void {
   }
-  islogged() {
-    return LoginComponent.isLoggedIn;
+  islogged() :boolean {
+    return localStorage.length>1
   }
 }
