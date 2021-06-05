@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginComponent } from 'src/app/login/login/login.component';
+import { LoginserviceService } from 'src/app/service/loginservice.service';
 
 @Component({
   selector: 'app-sidebarwelcomemsg',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebarwelcomemsg.component.css']
 })
 export class SidebarwelcomemsgComponent implements OnInit {
+ username:string='aa'
+ role : string=''
 
-  constructor() { }
+  constructor() {
+
+    
+   }
 
   ngOnInit(): void {
+    console.log("username")
+    console.log(LoginComponent.userName)
+    LoginComponent.userName
+    
   }
-
+  getUser()
+  {
+    LoginComponent.userName
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, Output } from '@angular/core';
 import { LoginComponent } from './login/login/login.component';
+import { CollapseComponent } from './mainmenubar/collapse/collapse.component';
 
 @Component({
   selector: 'app-root',
@@ -18,4 +19,5 @@ export class AppComponent {
   {
     return LoginComponent.isLoggedIn;
   }
+
 }

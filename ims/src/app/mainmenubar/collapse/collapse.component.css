@@ -1,0 +1,6 @@
+.shouldVisible{
+    visibility: visible;
+}
+.shouldInvisible{
+    visibility: hidden;
+}

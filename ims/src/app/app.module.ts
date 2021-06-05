@@ -20,6 +20,8 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { CoursesComponent } from './courses/courses.component';
 import { ErrorComponent } from './error/error.component';
 import { FormsModule } from '@angular/forms';
+import { LoginSuccessComponent } from './login-success/login-success.component';
+import { LoginserviceService } from './service/loginservice.service';
 
 
 @NgModule({
@@ -30,14 +32,14 @@ import { FormsModule } from '@angular/forms';
     SidebarwelcomemsgComponent,SidebarComponent,
      SidebarsuperviserComponent, SidebarteacherComponent,
       MainmenubarComponent, CollapseComponent, DisplaycontentComponent, 
-      HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent
+      HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [LoginComponent],
+  providers: [LoginComponent,LoginserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

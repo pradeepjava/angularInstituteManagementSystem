@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-        <app-collapse *ngIf='isSuccessLogin()'></app-collapse>
+        <app-collapse></app-collapse>
         <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-align-justify"></i>
         </button>
@@ -20,7 +20,7 @@
                     <a style=" z-index: 1;" class="nav-link colorWhite" *ngIf='!isSuccessLogin()' routerLink="/login">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a *ngIf='isSuccessLogin()' class="nav-link colorWhite" routerLink="logout">Logout</a>
+                    <a *ngIf='isSuccessLogin()' class="nav-link colorWhite" (click)="clearSession()" routerLink="logout">Logout</a>
                 </li>
             </ul>
         </div>
