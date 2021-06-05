@@ -24,8 +24,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  authenticateUser(user: string, pass: string) {
+  authenticateUser(user:string,pass:string) {
     if (user.length != 0 && pass.length != 0) {
+      console.log('entered user')
+      console.log(this.user)
       localStorage.setItem("name","pragya")
       localStorage.setItem("role","superviser")
      this.invaidLogin=false;

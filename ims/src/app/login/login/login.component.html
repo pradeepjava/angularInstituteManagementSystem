@@ -1,4 +1,6 @@
 <div class="container">
+
+
     <div class="row">
         <div class="col-md-3"></div>
 
@@ -9,6 +11,7 @@
             <h3>Login</h3>
 
             <p *ngIf="invaidLogin" style="color:crimson; font-size: 15px;">Invalid username or password</p>
+
             <table style="border-collapse: collapse;
 width: 40%;" class="table">
                 <tbody>
@@ -35,13 +38,15 @@ width: 40%;" class="table">
                         </td>
                         <td>&nbsp;</td>
                         <td align="right" style="padding: 5px;">
-                            <input type="button" (click)="authenticateUser('user','pass')" class="btn btn-success"
-                                style="padding: 10px;" value="Login" />
+                            <input type="button" class="btn btn-success" style="padding: 10px;"
+                                (click)='authenticateUser(user,pass)' value="Signin" />
                         </td>
                     </tr>
                 </tbody>
             </table>
+
         </div>
         <div class="col-md-3"></div>
     </div>
+
 </div>
