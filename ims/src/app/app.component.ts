@@ -10,14 +10,12 @@ import { CollapseComponent } from './mainmenubar/collapse/collapse.component';
 
 export class AppComponent {
 
- constructor()
- {
+  constructor() {
 
- }
+  }
   title = 'ims';
-  isSuccessLogin()
-  {
-    return localStorage.length>0
+  isSuccessLogin() {
+    return localStorage.length > 0
   }
 
 }

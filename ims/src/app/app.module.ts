@@ -15,13 +15,9 @@ import { DisplaycontentComponent } from './displaycontent/displaycontent.compone
 import { HomedisplayComponent } from './displaycontent/homedisplay/homedisplay.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login/login.component';
-
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { CoursesComponent } from './courses/courses.component';
-// import { ErrorComponent } from './error/error.component';
 import { FormsModule } from '@angular/forms';
-// import { LoginSuccessComponent } from './login-success/login-success.component';
-
 import { LogoutComponent } from './logout/logout.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginSuccessComponent } from './login-success/login-success.component';
@@ -32,10 +28,10 @@ import { LoginSuccessComponent } from './login-success/login-success.component';
     AppComponent,
     SidebardirectorComponent,
     SidebarstudentComponent,
-    SidebarwelcomemsgComponent,SidebarComponent,
-     SidebarsuperviserComponent, SidebarteacherComponent,
-      MainmenubarComponent, CollapseComponent, DisplaycontentComponent, 
-      HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent
+    SidebarwelcomemsgComponent, SidebarComponent,
+    SidebarsuperviserComponent, SidebarteacherComponent,
+    MainmenubarComponent, CollapseComponent, DisplaycontentComponent,
+    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent
   ],
   imports: [
     BrowserModule,

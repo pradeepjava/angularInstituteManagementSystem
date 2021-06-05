@@ -14,7 +14,7 @@ import { LoginserviceService } from 'src/app/service/loginservice.service';
 export class LoginComponent implements OnInit {
   user: string = ''
   pass: string = ''
-  // static isLoggedIn: boolean = false;
+  invaidLogin: boolean = false;
   loginService: LoginserviceService;
 
   constructor(private router: Router, loginService: LoginserviceService) {
@@ -25,15 +25,15 @@ export class LoginComponent implements OnInit {
   }
 
   authenticateUser(user: string, pass: string) {
-
     if (user.length != 0 && pass.length != 0) {
-      // LoginComponent.isLoggedIn = true;
       localStorage.setItem("name","pragya")
       localStorage.setItem("role","superviser")
+     this.invaidLogin=false;
       this.router.navigate(['loginSuccess'])
     }
     else {
       localStorage.clear();
+      this.invaidLogin=true;
     }
   }
 }
