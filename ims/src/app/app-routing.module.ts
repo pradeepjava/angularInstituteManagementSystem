@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'courses', component: CoursesComponent },
   {path:'loginSuccess', component: LoginSuccessComponent, canActivate:[RouteGuardService]},
   { path: 'logout', component: LogoutComponent, canActivate:[RouteGuardService]},
+  { path: 'error', component: LogoutComponent},
   { path: '**', component: ErrorComponent }
 ];
 

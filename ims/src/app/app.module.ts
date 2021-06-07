@@ -21,6 +21,8 @@ import { FormsModule } from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginSuccessComponent } from './login-success/login-success.component';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -36,9 +38,10 @@ import { LoginSuccessComponent } from './login-success/login-success.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [LoginComponent],
+  providers: [LoginComponent,HttpClient,HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
