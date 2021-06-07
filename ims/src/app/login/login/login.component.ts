@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginserviceService } from 'src/app/service/loginservice.service';
-
+import { USERNAME, TOKEN, API_URL, USERROLE, USER_DISABLED, INVALID_CREDENTIALS } from 'src/app/constentProvider';
 
 
 @Component({
@@ -14,10 +14,8 @@ export class LoginComponent implements OnInit {
   user: string = ''
   pass: string = ''
   invaidLogin: boolean = false;
-
-
+  userDisabled: boolean = false;
   constructor(private router: Router, private loginService: LoginserviceService) {
-
 
   }
   ngOnInit(): void {
@@ -27,24 +25,31 @@ export class LoginComponent implements OnInit {
     if (this.user.length != 0 && this.pass.length != 0) {
       this.loginService.executeJWTAuthenticationService(this.user, this.pass).subscribe(
         data => {
-          console.log(data);
-          localStorage.setItem("name", "pragya")
-          localStorage.setItem("role", "superviser")
-          this.invaidLogin = false;
-          this.router.navigate(['loginSuccess'])
-
-        },
-        error => {
-          console.log(error)
-          this.invaidLogin = true;
-          localStorage.clear();
-          this.router.navigate(['error'])
+          if (localStorage.getItem(USER_DISABLED) != null) {
+            this.userDisabled = true;
+            localStorage.clear();
+          }
+          else if (localStorage.getItem(INVALID_CREDENTIALS) !=null) {
+            this.invaidLogin = true;
+            localStorage.clear();
+          }
+          else {
+            this.invaidLogin = false;
+            this.userDisabled = false;
+            this.router.navigate(['loginSuccess'])
+          }
         }
-
+        // error => {
+        //   console.log(error)
+        //   this.invaidLogin = true;
+        //   this.router.navigate(['error'])
+        // }
       );
-
     }
-
+    else{
+      this.invaidLogin = true;
+      localStorage.clear();
+    }
   }
 }
 

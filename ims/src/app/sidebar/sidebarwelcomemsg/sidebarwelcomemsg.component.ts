@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginComponent } from 'src/app/login/login/login.component';
-import { LoginserviceService } from 'src/app/service/loginservice.service';
-
+import { USERNAME, TOKEN, API_URL, USERROLE, USER_DISABLED, INVALID_CREDENTIALS } from 'src/app/constentProvider';
 @Component({
   selector: 'app-sidebarwelcomemsg',
   templateUrl: './sidebarwelcomemsg.component.html',
@@ -15,14 +13,14 @@ export class SidebarwelcomemsgComponent implements OnInit {
   ngOnInit(): void {
   }
   assignuser(): string {
-    let l = localStorage.getItem("name");
+    let l = localStorage.getItem(USERNAME);
     if (l != null) {
       return l
     }
     return ''
   }
   assignedrole(): string {
-    let l = localStorage.getItem("role");
+    let l = localStorage.getItem(USERROLE);
     if (l != null) {
       return l
     }

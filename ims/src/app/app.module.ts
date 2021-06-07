@@ -23,6 +23,7 @@ import { ErrorComponent } from './error/error.component';
 import { LoginSuccessComponent } from './login-success/login-success.component';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { ConstantProvider } from './constentProvider';
 
 
 @NgModule({
@@ -41,7 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [LoginComponent,HttpClient,HttpClientModule],
+  providers: [LoginComponent,HttpClient,HttpClientModule,ConstantProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
