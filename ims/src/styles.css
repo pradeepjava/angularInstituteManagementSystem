@@ -15,6 +15,22 @@ color:yellow
 a:visited {
     color: white;
   }
+
+  .shouldVisible{
+    visibility: visible;
+}
+.shouldInvisible{
+    visibility: hidden;
+}
+.blink {
+    animation: blinker 1s step-start infinite;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
 /*
 own css done.
 */
