@@ -13,7 +13,7 @@ import { USERNAME, TOKEN, API_URL, USERROLE, USER_DISABLED, INVALID_CREDENTIALS 
 export class LoginComponent implements OnInit {
   user: string = ''
   pass: string = ''
-  invaidLogin: boolean = false;
+  invalidLogin: boolean = false;
   userDisabled: boolean = false;
   constructor(private router: Router, private loginService: LoginserviceService) {
 
@@ -27,27 +27,29 @@ export class LoginComponent implements OnInit {
         data => {
           if (localStorage.getItem(USER_DISABLED) != null) {
             this.userDisabled = true;
+            this.invalidLogin = false;
             localStorage.clear();
           }
           else if (localStorage.getItem(INVALID_CREDENTIALS) !=null) {
-            this.invaidLogin = true;
+            this.invalidLogin = true;
+            this.userDisabled = false;
             localStorage.clear();
           }
           else {
-            this.invaidLogin = false;
+            this.invalidLogin = false;
             this.userDisabled = false;
             this.router.navigate(['loginSuccess'])
           }
+        },
+        error => {
+          console.log(error)
+          this.invalidLogin = true;
+          this.router.navigate(['error'])
         }
-        // error => {
-        //   console.log(error)
-        //   this.invaidLogin = true;
-        //   this.router.navigate(['error'])
-        // }
       );
     }
     else{
-      this.invaidLogin = true;
+      this.invalidLogin = true;
       localStorage.clear();
     }
   }
