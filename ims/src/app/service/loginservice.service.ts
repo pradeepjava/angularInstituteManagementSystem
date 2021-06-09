@@ -31,8 +31,10 @@ export class LoginserviceService {
           else {
             const helper = new JwtHelperService();
             const decoded = helper.decodeToken(returnData);
-            localStorage.setItem(USERNAME, decoded.aud);
-            localStorage.setItem(USERROLE, decoded.sub);
+            var roleAndName=decoded.aud;
+            var splitted=roleAndName.split("_____");
+            localStorage.setItem(USERROLE, splitted[0]);
+            localStorage.setItem(USERNAME,splitted[1]);
             localStorage.setItem(TOKENEXPTIME, decoded.exp);
             localStorage.setItem(TOKEN, `Bearer ${data.token}`);
           }
