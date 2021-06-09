@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginComponent } from '../login/login/login.component';
+import { LoginserviceService } from '../service/loginservice.service';
 
 @Component({
   selector: 'app-mainmenubar',
@@ -7,13 +7,20 @@ import { LoginComponent } from '../login/login/login.component';
   styleUrls: ['./mainmenubar.component.css']
 })
 export class MainmenubarComponent implements OnInit {
+  loginService:LoginserviceService | undefined;
+  constructor(loginService: LoginserviceService) { 
+this.loginService=loginService;
 
-  constructor(private loginComponent: LoginComponent) { }
+  }
 
   ngOnInit(): void {
   }
   isSuccessLogin()
   {
-    return this.loginComponent.isLoggedIn;
+   return localStorage.length>0;
+  }
+  clearSession()
+  {
+    localStorage.clear();
   }
 }

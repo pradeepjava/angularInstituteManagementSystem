@@ -18,7 +18,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist/ims",
             "index": "src/index.html",
@@ -39,9 +39,9 @@
               "./node_modules/jquery/dist/jquery.min.js",
               "./node_modules/popper.js/dist/umd/popper.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "./node_modules/bootstrap/dist/js/solid.js",
-              "./node_modules/bootstrap/dist/js/fontawesome.js",
-              "src/actions.js"
+              "src/assets/jssource/actions.js",
+              "src/assets/jssource/solid.js",
+              "src/assets/jssource/fontawesome.js"
 
             ]
           },
@@ -78,7 +78,12 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ims:build"
+            "browserTarget": "ims:build",
+            "sourceMap": {
+              "scripts": true,
+              "styles": true,
+              "vendor": true
+            }
           },
           "configurations": {
             "production": {

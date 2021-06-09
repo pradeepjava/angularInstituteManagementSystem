@@ -10,8 +10,27 @@ own css
     font-weight: bold;
 }
 .colorWhite{
-color:white;
+color:yellow
 }
+a:visited {
+    color: white;
+  }
+
+  .shouldVisible{
+    visibility: visible;
+}
+.shouldInvisible{
+    visibility: hidden;
+}
+.blink {
+    animation: blinker 1s step-start infinite;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
 /*
 own css done.
 */
@@ -38,18 +57,17 @@ a, a:hover, a:focus {
     transition: all 0.3s;
 }
 
-
-.navbar {
-background: #6d7fcc;
-color:white;
-padding: 15px 10px;
-height:76px;
-border: none;
-border-radius: 0;
-margin-bottom: 40px;
-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-   
-}
+.navbar{
+    padding: 40px 40px;
+    background: #6d7fcc;
+    color:white;
+    position:relative;
+    display:-ms-flexbox;display:flex;
+    -ms-flex-wrap:wrap;flex-wrap:wrap;
+    -ms-flex-align:center;align-items:center;
+    -ms-flex-pack:justify;
+    justify-content:space-between;
+    padding:.5rem 1rem}
 
 .navbar-btn {
     box-shadow: none;
@@ -94,6 +112,7 @@ box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 #sidebar .sidebar-header {
     padding: 10px;
     background: #6d7fcc;
+    height:55px;
 }
 
 #sidebar ul.components {

@@ -1,5 +1,6 @@
 import { Component, Output } from '@angular/core';
 import { LoginComponent } from './login/login/login.component';
+import { CollapseComponent } from './mainmenubar/collapse/collapse.component';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,12 @@ import { LoginComponent } from './login/login/login.component';
 
 export class AppComponent {
 
- constructor(private loginComponent:LoginComponent)
- {
+  constructor() {
 
- }
-  title = 'ims';
-  isSuccessLogin()
-  {
-    return this.loginComponent.isLoggedIn;
   }
+  title = 'ims';
+  isSuccessLogin() {
+    return localStorage.length > 0
+  }
+
 }

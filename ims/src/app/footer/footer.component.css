@@ -5,13 +5,13 @@
     height: 11%;
     background: white;
     }
-    .adjustFooterContent{
+
+.adjustFooterContent{
     background: #6d7fcc;
-color:white;
-padding: 15px 10px;
-border: none;
-border-radius: 0;
-/* margin-right:10px; */
-margin-left:0px;
-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-    }
+    color:white;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 0;
+    margin-left:0px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}

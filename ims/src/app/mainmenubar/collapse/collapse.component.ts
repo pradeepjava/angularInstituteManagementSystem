@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginComponent } from 'src/app/login/login/login.component';
+import { LoginserviceService } from 'src/app/service/loginservice.service';
+
 
 
 @Component({
@@ -7,10 +10,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./collapse.component.css']
 })
 export class CollapseComponent implements OnInit {
+  static isSidebar: boolean = true;
+  loginService:LoginserviceService | undefined;
+  constructor( loginService:LoginserviceService) {
 
-  constructor() { }
-
+    this.loginService=loginService;
+   }
   ngOnInit(): void {
   }
- 
+  islogged() :boolean {
+    return localStorage.length>1
+  }
 }

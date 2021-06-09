@@ -15,6 +15,15 @@ import { DisplaycontentComponent } from './displaycontent/displaycontent.compone
 import { HomedisplayComponent } from './displaycontent/homedisplay/homedisplay.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login/login.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { CoursesComponent } from './courses/courses.component';
+import { FormsModule } from '@angular/forms';
+import { LogoutComponent } from './logout/logout.component';
+import { ErrorComponent } from './error/error.component';
+import { LoginSuccessComponent } from './login-success/login-success.component';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { ConstantProvider } from './constentProvider';
 
 
 @NgModule({
@@ -22,16 +31,18 @@ import { LoginComponent } from './login/login/login.component';
     AppComponent,
     SidebardirectorComponent,
     SidebarstudentComponent,
-    SidebarwelcomemsgComponent,SidebarComponent,
-     SidebarsuperviserComponent, SidebarteacherComponent,
-      MainmenubarComponent, CollapseComponent, DisplaycontentComponent, 
-      HomedisplayComponent, FooterComponent, LoginComponent
+    SidebarwelcomemsgComponent, SidebarComponent,
+    SidebarsuperviserComponent, SidebarteacherComponent,
+    MainmenubarComponent, CollapseComponent, DisplaycontentComponent,
+    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [LoginComponent],
+  providers: [LoginComponent,HttpClient,HttpClientModule,ConstantProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

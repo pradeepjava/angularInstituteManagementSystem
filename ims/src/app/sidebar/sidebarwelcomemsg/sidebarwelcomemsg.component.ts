@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { USERNAME, TOKEN, API_URL, USERROLE, USER_DISABLED, INVALID_CREDENTIALS } from 'src/app/constentProvider';
 @Component({
   selector: 'app-sidebarwelcomemsg',
   templateUrl: './sidebarwelcomemsg.component.html',
@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarwelcomemsgComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
-
+  assignuser(): string {
+    let l = localStorage.getItem(USERNAME);
+    if (l != null) {
+      return l
+    }
+    return ''
+  }
+  assignedrole(): string {
+    let l = localStorage.getItem(USERROLE);
+    if (l != null) {
+      return l
+    }
+    return ''
+  }
 }

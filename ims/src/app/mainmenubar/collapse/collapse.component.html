@@ -1,5 +1,7 @@
-<button type="button" id="sidebarCollapse" class="navbar-btn">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
+<div [ngClass]="islogged()? 'shouldVisible':'shouldInvisible'">
+    <button type="button" id="sidebarCollapse" class="navbar-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</div>

@@ -1,1 +1,44 @@
-<p>login works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+
+        <div class="col-md-8" align="center"
+            style="border:1px solid black; background-color: grey;margin-top:50px; padding:25px">
+            <img src="/assets/images/loginimg.png"  height="50" width="50"/>
+            <div [ngClass]="invalidLogin || userDisabled ? 'shouldVisible':'shouldInvisible'">
+                <div *ngIf='invalidLogin; else disabledUser'>
+            <p style="color:red; font-size: 15px; font-weight: bolder;" class="blink" id="displayMsg">
+                Invalid username or password</p>
+            </div>
+                <ng-template #disabledUser>
+                <p style="color:red; font-size: 15px; font-weight: bolder;" class="blink" id="displayMsg">
+                    User Disabled. Contact Admin!</p> 
+                </ng-template> 
+        </div>
+            <form (ngSubmit)='authenticateUser()'>
+                <table style="border-collapse: collapse;width: 40%;" class="table">
+                    <tbody>
+                        <tr>
+                            <td align="right" style="color:white;">UserId*</td>
+                            <td>&nbsp;</td>
+                            <td><input type="text" [(ngModel)]="user" name="username"></td>
+                        </tr>
+                        <tr>
+                            <td align="right" style="color:white;">Password*</td>
+                            <td>&nbsp;</td>
+                            <td>
+                                <input type="password" [(ngModel)]="pass" name="password"></td>
+                        <tr>
+                            <td colspan="2" align="right" nowrap><a href="#"  style="color:red">Forgot Password!</a></td>
+                            <td align="right" style="padding: 5px;">
+                                <button type="submit" class="btn btn-success" style="padding: 10px;"
+                                    name="submit">Signin</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
