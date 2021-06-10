@@ -1,0 +1,52 @@
+<div class="formMargin">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-7" align="center" style="margin-bottom:20px">
+        <h2>Add new course!<br></h2>
+    </div>
+    <div class="col-sm-3"></div>
+    <form (ngSubmit)="!courseSaveForm.invalid && saveCourse()" #courseSaveForm="ngForm">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"></label>
+            <label class="col-sm-1 col-form-label">Course</label>
+            <div class="col-sm-6">
+                <input type="text" [(ngModel)]="course" class="form-control" id="courseName"
+                    placeholder="New Course Name" required="required">
+            </div>
+            <label class="col-sm-3 col-form-label"></label>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"></label>
+            <label class="col-sm-1 col-form-label">Fee</label>
+            <div class="col-sm-6">
+                <input type="number" [(ngModel)]="fee" class="form-control" id="fee" placeholder="0"
+                    required="required">
+            </div>
+            <label class="col-sm-3 col-form-label"></label>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"></label>
+            <label class="col-sm-1 col-form-label">Status</label>
+            <div class="col-sm-6">
+                <select class="form-control" [(ngModel)]="status" id="statusSelect" required="required">
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+            </div>
+            <label class="col-sm-3 col-form-label"></label>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label"></label>
+            <div class="col-sm-6">
+                <button type="submit" class="btn btn-success">Save Course</button>
+            </div>
+            <label class="col-sm-3 col-form-label"></label>
+        </div>
+    </form>
+    <div class="alert alert-warning" *ngIf="!validCourse || !validFee || !validStatus">
+        <p *ngIf="!validCourse">Invalid Course or Course already exists.</p>
+        <p *ngIf="!validFee">Invalid Fee. Should be >0</p>
+        <p *ngIf="!validStatus">You must select status</p>
+    </div>
+
+</div>

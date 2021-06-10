@@ -24,6 +24,8 @@ import { LoginSuccessComponent } from './login-success/login-success.component';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ConstantProvider } from './constentProvider';
+import { CourseComponent } from './courses/course/course.component';
+import { AddcourseComponent } from './courses/course/addcourse/addcourse.component';
 
 
 @NgModule({
@@ -34,7 +36,7 @@ import { ConstantProvider } from './constentProvider';
     SidebarwelcomemsgComponent, SidebarComponent,
     SidebarsuperviserComponent, SidebarteacherComponent,
     MainmenubarComponent, CollapseComponent, DisplaycontentComponent,
-    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent
+    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent, CourseComponent, AddcourseComponent
   ],
   imports: [
     BrowserModule,

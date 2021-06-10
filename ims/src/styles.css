@@ -31,6 +31,12 @@ a:visited {
       opacity: 0;
     }
   }
+
+  .formMargin{
+    margin-top :20px;
+     margin-left: 20px;
+     margin-right:20px;
+  }
 /*
 own css done.
 */

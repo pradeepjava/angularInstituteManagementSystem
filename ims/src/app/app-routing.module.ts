@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { AddcourseComponent } from './courses/course/addcourse/addcourse.component';
 import { CoursesComponent } from './courses/courses.component';
 import { HomedisplayComponent } from './displaycontent/homedisplay/homedisplay.component';
 import { ErrorComponent } from './error/error.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'courses', component: CoursesComponent },
   {path:'loginSuccess', component: LoginSuccessComponent, canActivate:[RouteGuardService]},
   { path: 'logout', component: LogoutComponent, canActivate:[RouteGuardService]},
+  {path: 'addCourse', component:AddcourseComponent, canActivate:[RouteGuardService]},
   { path: 'error', component: ErrorComponent},
   { path: '**', component: ErrorComponent }
 ];
