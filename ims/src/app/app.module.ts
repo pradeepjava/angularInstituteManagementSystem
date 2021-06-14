@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConstantProvider } from './constentProvider';
 import { CourseComponent } from './courses/course/course.component';
 import { AddcourseComponent } from './courses/course/addcourse/addcourse.component';
+import { SpinnercompComponent } from './shared/spinnercomp/spinnercomp.component';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import { AddcourseComponent } from './courses/course/addcourse/addcourse.compone
     SidebarwelcomemsgComponent, SidebarComponent,
     SidebarsuperviserComponent, SidebarteacherComponent,
     MainmenubarComponent, CollapseComponent, DisplaycontentComponent,
-    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent, CourseComponent, AddcourseComponent
+    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent, CourseComponent, AddcourseComponent, SpinnercompComponent
   ],
   imports: [
     BrowserModule,
