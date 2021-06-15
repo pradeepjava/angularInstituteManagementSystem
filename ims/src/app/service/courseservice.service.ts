@@ -20,13 +20,6 @@ export class CourseserviceService {
   constructor(private http: HttpClient) { }
 
   saveCourseInDB(courseName: string, courseFee: number, status: string) {
-    let headers:HttpHeaders=new HttpHeaders();
-    let token = localStorage.getItem(TOKEN);
-    if (token) {
-       headers = new HttpHeaders({
-        Authorization: token
-      })
-    }
-     return this.http.post<CourseDetails>(`${API_URL}/courseDetails/saveCourse`, { courseName, courseFee, status }, { headers: headers })
+     return this.http.post<CourseDetails>(`${API_URL}/courseDetails/saveCourse`, { courseName, courseFee, status })
   }
 }

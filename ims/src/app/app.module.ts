@@ -21,12 +21,13 @@ import { FormsModule } from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginSuccessComponent } from './login-success/login-success.component';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ConstantProvider } from './constentProvider';
 import { CourseComponent } from './courses/course/course.component';
 import { AddcourseComponent } from './courses/course/addcourse/addcourse.component';
 import { SpinnercompComponent } from './shared/spinnercomp/spinnercomp.component';
+import { MyhttpintereptorService } from './service/myhttpintereptor.service';
 
 
 @NgModule({
@@ -45,7 +46,9 @@ import { SpinnercompComponent } from './shared/spinnercomp/spinnercomp.component
     FormsModule,
     HttpClientModule
   ],
-  providers: [LoginComponent,HttpClient,HttpClientModule,ConstantProvider],
+  providers: [LoginComponent,HttpClient,HttpClientModule,ConstantProvider,
+    {provide:HTTP_INTERCEPTORS,useClass:MyhttpintereptorService,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

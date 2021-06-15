@@ -2,7 +2,6 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-
             </div>
             <div class="col-sm-7" style="margin-bottom: 15px;">
                 <h2>Add New Course!</h2>
@@ -55,14 +54,14 @@
     <div class="row">
         <div class="col-sm-3">
         </div>
-        <div class="col-sm-7">
+        <div class="col-sm-6">
             <div class="alert alert-warning" *ngIf="!validCourse || !validFee || !validStatus">
                 <p *ngIf="!validCourse">Invalid Course or Course already exists.</p>
                 <p *ngIf="!validFee">Invalid Fee. Should be >0</p>
                 <p *ngIf="!validStatus">You must select status</p>
             </div>
             <app-spinnercomp *ngIf="spinn"></app-spinnercomp>
-            <div *ngIf="!spinn">
+            <div *ngIf="!spinn" >
             <div *ngIf="recordSaved" class="alert alert-success"
                 [ngClass]="showMessageForSaveStatus? 'shouldVisible':'shouldInvisible'">
                 <p align="center">Course Saved!</p>
@@ -72,7 +71,7 @@
                 <p align="center">{{errorMessage}}</p>
             </div>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
         </div> 
     </div>
     </div>

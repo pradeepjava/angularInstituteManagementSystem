@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CourseserviceService } from 'src/app/service/courseservice.service';
-import { map } from 'rxjs/operators';
 import { SpinnerServiceService } from 'src/app/service/spinner-service.service';
 import { NgForm } from '@angular/forms';
 
@@ -22,35 +21,28 @@ export class AddcourseComponent implements OnInit {
   showMessageForSaveStatus = false;
   spinn = false;
   errorMessage=''
-  constructor(private courseService: CourseserviceService,
-    private spinnerService: SpinnerServiceService,
-    private cdrf: ChangeDetectorRef
+  constructor(private courseService: CourseserviceService
   ) { }
 
   ngOnInit(): void {
-    this.init();
   }
-  init() {
-    this.spinnerService.getSpinnerObserver().subscribe((status) => {
-      this.spinn = status == 'start';
-      this.cdrf.detectChanges();
-    })
-  }
+  
   saveCourse(form : NgForm) {
-    
     if (this.validateForm()) {
-      this.spinnerService.requstStarted();
+      this.spinn=true;
       this.showMessageForSaveStatus = false;
       this.courseService.saveCourseInDB(this.course, this.fee, this.status).subscribe(data => {
         this.recordSaved = true;
         form.resetForm();
+        this.spinn=false;
+        this.showMessageForSaveStatus = true;
       },
         error => {
           this.errorMessage=error.error.message;
           this.recordSaved = false;
+          this.spinn=false;
+          this.showMessageForSaveStatus = true;
         })
-      this.spinnerService.requestEndned();
-      this.showMessageForSaveStatus = true;
     }
 
   }
