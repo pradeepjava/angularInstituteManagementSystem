@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CourseserviceService } from 'src/app/service/courseservice.service';
 import { map } from 'rxjs/operators';
+import { SpinnerServiceService } from 'src/app/service/spinner-service.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-addcourse',
@@ -19,27 +21,35 @@ export class AddcourseComponent implements OnInit {
   recordSaved = false;
   showMessageForSaveStatus = false;
   spinn = false;
-  constructor(private courseService: CourseserviceService) { }
+  errorMessage=''
+  constructor(private courseService: CourseserviceService,
+    private spinnerService: SpinnerServiceService,
+    private cdrf: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
+    this.init();
   }
-  saveCourse() {
-    if (this.validateForm()) {
-      this.spinn = true;
-      this.showMessageForSaveStatus = false;
-      this.recordSaved = true;
+  init() {
+    this.spinnerService.getSpinnerObserver().subscribe((status) => {
+      this.spinn = status == 'start';
+      this.cdrf.detectChanges();
+    })
+  }
+  saveCourse(form : NgForm) {
     
+    if (this.validateForm()) {
+      this.spinnerService.requstStarted();
+      this.showMessageForSaveStatus = false;
       this.courseService.saveCourseInDB(this.course, this.fee, this.status).subscribe(data => {
-        console.log("its right")
-        console.log(data)
-        console.log(data.courseId)
         this.recordSaved = true;
-       
+        form.resetForm();
       },
         error => {
-          console.log("special error")
+          this.errorMessage=error.error.message;
+          this.recordSaved = false;
         })
-      this.spinn = false;
+      this.spinnerService.requestEndned();
       this.showMessageForSaveStatus = true;
     }
 

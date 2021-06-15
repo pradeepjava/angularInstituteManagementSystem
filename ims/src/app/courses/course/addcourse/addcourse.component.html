@@ -11,7 +11,7 @@
             </div>
         </div>
     </div>
-    <form (ngSubmit)="!courseSaveForm.invalid && saveCourse()" #courseSaveForm="ngForm">
+    <form (ngSubmit)="!courseSaveForm.invalid && saveCourse(courseSaveForm)" #courseSaveForm="ngForm">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label"></label>
             <label class="col-sm-1 col-form-label">Course</label>
@@ -61,18 +61,19 @@
                 <p *ngIf="!validFee">Invalid Fee. Should be >0</p>
                 <p *ngIf="!validStatus">You must select status</p>
             </div>
-            <app-spinnercomp * ngIf="spinn"></app-spinnercomp>
-<!-- 
+            <app-spinnercomp *ngIf="spinn"></app-spinnercomp>
+            <div *ngIf="!spinn">
             <div *ngIf="recordSaved" class="alert alert-success"
                 [ngClass]="showMessageForSaveStatus? 'shouldVisible':'shouldInvisible'">
-                <p align="center">Record Saved!</p>
+                <p align="center">Course Saved!</p>
             </div>
             <div *ngIf="!recordSaved" class="alert alert-warning"
                 [ngClass]="showMessageForSaveStatus? 'shouldVisible':'shouldInvisible'">
-                <p align="center">Failed to save record</p>
+                <p align="center">{{errorMessage}}</p>
             </div>
         </div>
         <div class="col-sm-2">
-        </div> -->
+        </div> 
+    </div>
     </div>
 </div>
