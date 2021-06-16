@@ -1,0 +1,56 @@
+<div class="formMargin">
+
+    <app-spinnercomp *ngIf="activeSpinner"></app-spinnercomp>
+    <div *ngIf="!activeSpinner">
+        <div class="container">
+            <div class="col-md-2"></div>
+            <div class="container col-md-8">
+                <h3 align="center" style="color:#6d7fcc;">Edit CourseId: <span style="color:green">{{courseDetails.courseId}}</span></h3>
+                <form #editCourseForm="ngForm" (ngSubmit)="onSubmit(editCourseForm)" *ngIf="!activeSpinner">
+                    <div class="form-group">
+                        <label for="courseId">CourseName: &nbsp;</label>
+                        <input type="text" name="courseName" id="courseName" class="form-control"
+                            [(ngModel)]="courseDetails.courseName"
+                            required
+                            >
+                    </div>
+                    <div class="form-group">
+                        <label for="courseId">CourseFee</label>
+                        <input type="number" name="courseFee" id="courseFee" class="form-control"
+                            [(ngModel)]="courseDetails.courseFee"
+                            required
+                            >
+                    </div>
+                    <div class="form-group">
+                        <label for="courseId">CourseStatus &nbsp;</label>
+                        <input type="text" name="status" id="status" class="form-control"
+                            [(ngModel)]="courseDetails.status"
+                            required
+                            >
+                    </div>
+                    <div class="form-group">
+                        <label for="courseId">ApprovedStatus: &nbsp;</label>
+                        <label for="approved" name="approved" id="approved">{{courseDetails.approveStatus}}</label>
+                    </div>
+                    <div class="form-group form-inline">
+                        <button type="submit" class="btn btn-success">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-primary"(click)="cancelMe()">Cancel</button>
+                    </div>
+                </form>
+                <app-spinnercomp *ngIf="spinn"></app-spinnercomp>
+                <div *ngIf="!spinn" >
+                    <div *ngIf="displayError" class="alert alert-danger"
+                        [ngClass]="displayError? 'shouldVisible':'shouldInvisible'">
+                        <div  *ngIf="serverError">
+                        <p align="center">Unable to save. Course already exists or network error..</p>
+                    </div>
+                    <div  *ngIf="validationError">
+                        <p align="center">Invalid Entry...</p>
+                    </div>
+                    </div>
+                    </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>

@@ -21,13 +21,15 @@ import { FormsModule } from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginSuccessComponent } from './login-success/login-success.component';
-import { HttpHeaders, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ConstantProvider } from './constentProvider';
 import { CourseComponent } from './courses/course/course.component';
 import { AddcourseComponent } from './courses/course/addcourse/addcourse.component';
 import { SpinnercompComponent } from './shared/spinnercomp/spinnercomp.component';
 import { MyhttpintereptorService } from './service/myhttpintereptor.service';
+import { ActivecourseComponent } from './courses/course/activecourse/activecourse.component';
+import { EditCourseComponent } from './courses/course/edit-course/edit-course.component';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { MyhttpintereptorService } from './service/myhttpintereptor.service';
     SidebarwelcomemsgComponent, SidebarComponent,
     SidebarsuperviserComponent, SidebarteacherComponent,
     MainmenubarComponent, CollapseComponent, DisplaycontentComponent,
-    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent, CourseComponent, AddcourseComponent, SpinnercompComponent
+    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent, CourseComponent, AddcourseComponent, SpinnercompComponent, ActivecourseComponent, EditCourseComponent
+    
   ],
   imports: [
     BrowserModule,

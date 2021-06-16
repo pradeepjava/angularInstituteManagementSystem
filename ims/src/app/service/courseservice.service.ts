@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TOKEN, API_URL } from '../constentProvider';
+import { API_URL } from '../constentProvider';
 
 export class CourseDetails {
   constructor(public courseId: number,
@@ -20,6 +20,22 @@ export class CourseserviceService {
   constructor(private http: HttpClient) { }
 
   saveCourseInDB(courseName: string, courseFee: number, status: string) {
-     return this.http.post<CourseDetails>(`${API_URL}/courseDetails/saveCourse`, { courseName, courseFee, status })
+    return this.http.post<CourseDetails>(`${API_URL}/courseDetails/saveCourse`, { courseName, courseFee, status })
+  }
+
+  updateCourseInDB(courseToUpdate:CourseDetails) {
+    return this.http.put<CourseDetails>(`${API_URL}/courseDetails/update`,
+    courseToUpdate)
+  }
+
+  getAllActiveCourse() {
+    return this.http.get<CourseDetails[]>(`${API_URL}/courseDetails/active`);
+  }
+
+  deleteCourse(id: number) {
+    return this.http.delete(`${API_URL}/courseDetails/delete/${id}`)
+  }
+  getCourseById(id: number) {
+   return this.http.get<CourseDetails>(`${API_URL}/courseDetails/${id}`);
   }
 }
