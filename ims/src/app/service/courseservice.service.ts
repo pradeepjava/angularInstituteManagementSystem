@@ -23,9 +23,9 @@ export class CourseserviceService {
     return this.http.post<CourseDetails>(`${API_URL}/courseDetails/saveCourse`, { courseName, courseFee, status })
   }
 
-  updateCourseInDB(courseToUpdate:CourseDetails) {
+  updateCourseInDB(courseToUpdate: CourseDetails) {
     return this.http.put<CourseDetails>(`${API_URL}/courseDetails/update`,
-    courseToUpdate)
+      courseToUpdate)
   }
 
   getAllActiveCourse() {
@@ -36,6 +36,9 @@ export class CourseserviceService {
     return this.http.delete(`${API_URL}/courseDetails/delete/${id}`)
   }
   getCourseById(id: number) {
-   return this.http.get<CourseDetails>(`${API_URL}/courseDetails/${id}`);
+    return this.http.get<CourseDetails>(`${API_URL}/courseDetails/${id}`);
+  }
+  getCourseBySearchText(text: String) {
+    return this.http.get<CourseDetails[]>(`${API_URL}/courseDetails/searchCourseByText?text=${text}`);
   }
 }

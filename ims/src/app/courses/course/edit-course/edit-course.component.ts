@@ -16,7 +16,8 @@ export class EditCourseComponent implements OnInit {
   id: number = 0;
   public courseDetails: CourseDetails = new CourseDetails(0, 'a', 0, 'a', 'a');
   activeSpinner: boolean = false;
-  constructor(private courseService: CourseserviceService, private activateRoute: ActivatedRoute, private router: Router) { }
+  constructor(private courseService: CourseserviceService, 
+    private activateRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.initData()
