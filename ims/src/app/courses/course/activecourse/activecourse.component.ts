@@ -13,25 +13,28 @@ import { CourseDetails } from 'src/app/service/courseservice.service'
 export class ActivecourseComponent implements OnInit {
   searchText: string = ''
   static activeSearch: boolean = false;
-  static staticSearchText=''
+  static staticSearchText = ''
   activeSpinner: boolean = true;
   courseDetailsArray: CourseDetails[] = [];
+  p: number = 0;
   isPreviouslySearchPerformed = false;
+  isPaginate: boolean = false;
   constructor(private courseService: CourseserviceService, private route: Router) { }
 
   ngOnInit(): void {
-    this.searchText=ActivecourseComponent.staticSearchText;
+    this.searchText = ActivecourseComponent.staticSearchText;
     if (!ActivecourseComponent.activeSearch)
       this.getActiveCourse();
     else
       this.performActiveSearch(ActivecourseComponent.staticSearchText);
   }
-
+  reversePaginate() {
+    this.isPaginate = !this.isPaginate;
+  }
   getIsActiveSearch() {
     return ActivecourseComponent.activeSearch;
   }
-  getSerchText()
-  {
+  getSerchText() {
     return ActivecourseComponent.staticSearchText;
   }
   editMe(id: number) {
@@ -47,8 +50,8 @@ export class ActivecourseComponent implements OnInit {
     }
     else if (ActivecourseComponent.activeSearch && this.isPreviouslySearchPerformed) {
       ActivecourseComponent.activeSearch = false;
-      ActivecourseComponent.staticSearchText='';
-      this.searchText=''
+      ActivecourseComponent.staticSearchText = '';
+      this.searchText = ''
       this.isPreviouslySearchPerformed = false;
       this.getActiveCourse();
     }
@@ -58,7 +61,7 @@ export class ActivecourseComponent implements OnInit {
     this.activeSpinner = true;
     ActivecourseComponent.activeSearch = true;
     this.isPreviouslySearchPerformed = true;
-    ActivecourseComponent.staticSearchText=newLocal.trim();
+    ActivecourseComponent.staticSearchText = newLocal.trim();
     this.courseService.getCourseBySearchText(newLocal.trim()).subscribe(data => {
       this.courseDetailsArray = data;
       this.activeSpinner = false;

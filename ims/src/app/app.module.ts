@@ -30,6 +30,8 @@ import { SpinnercompComponent } from './shared/spinnercomp/spinnercomp.component
 import { MyhttpintereptorService } from './service/myhttpintereptor.service';
 import { ActivecourseComponent } from './courses/course/activecourse/activecourse.component';
 import { EditCourseComponent } from './courses/course/edit-course/edit-course.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 @NgModule({
@@ -44,6 +46,7 @@ import { EditCourseComponent } from './courses/course/edit-course/edit-course.co
     
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
