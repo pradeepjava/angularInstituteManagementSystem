@@ -7,7 +7,8 @@ export class CourseDetails {
     public courseName: string,
     public courseFee: number,
     public status: string,
-    public approveStatus: string
+    public approveStatus: string,
+    public approveDate:Date
   ) {
   }
 }
@@ -26,6 +27,11 @@ export class CourseserviceService {
   updateCourseInDB(courseToUpdate: CourseDetails) {
     return this.http.put<CourseDetails>(`${API_URL}/courseDetails/update`,
       courseToUpdate)
+  }
+
+  approveCourseInDB(coursesToUpdate: CourseDetails[]) {
+    return this.http.put<CourseDetails>(`${API_URL}/courseDetails/approveAll`,
+    coursesToUpdate)
   }
 
   getAllActiveCourse(courseType:string) {

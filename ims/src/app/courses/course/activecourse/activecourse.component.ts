@@ -110,7 +110,6 @@ export class ActivecourseComponent implements OnInit {
 
   deleteMe(id: number) {
     const newLocal = confirm("Are you sure to delete?");
-    console.log(newLocal)
     if (newLocal) {
       this.activeSpinner = true;
       this.courseService.deleteCourse(id).subscribe(data => {

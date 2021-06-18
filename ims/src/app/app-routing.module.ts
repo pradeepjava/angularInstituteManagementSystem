@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ActivecourseComponent } from './courses/course/activecourse/activecourse.component';
 import { AddcourseComponent } from './courses/course/addcourse/addcourse.component';
+import { ApprovecourseComponent } from './courses/course/approvecourse/approvecourse.component';
 import { EditCourseComponent } from './courses/course/edit-course/edit-course.component';
 import { CoursesComponent } from './courses/courses.component';
 import { HomedisplayComponent } from './displaycontent/homedisplay/homedisplay.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'addCourse', component: AddcourseComponent, canActivate: [RouteGuardService] },
   { path: 'activeCourse', component: ActivecourseComponent, canActivate: [RouteGuardService] },
   { path: 'course/:id', component: EditCourseComponent, canActivate: [RouteGuardService] },
+  { path: 'approveCourse', component: ApprovecourseComponent, canActivate: [RouteGuardService] },
   { path: 'error', component: ErrorComponent },
   { path: '**', component: ErrorComponent }
 ];

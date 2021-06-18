@@ -31,6 +31,7 @@ import { MyhttpintereptorService } from './service/myhttpintereptor.service';
 import { ActivecourseComponent } from './courses/course/activecourse/activecourse.component';
 import { EditCourseComponent } from './courses/course/edit-course/edit-course.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ApprovecourseComponent } from './courses/course/approvecourse/approvecourse.component';
 
 
 
@@ -42,7 +43,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SidebarwelcomemsgComponent, SidebarComponent,
     SidebarsuperviserComponent, SidebarteacherComponent,
     MainmenubarComponent, CollapseComponent, DisplaycontentComponent,
-    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent, CourseComponent, AddcourseComponent, SpinnercompComponent, ActivecourseComponent, EditCourseComponent
+    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent, CourseComponent, AddcourseComponent, SpinnercompComponent, ActivecourseComponent, EditCourseComponent, ApprovecourseComponent
     
   ],
   imports: [

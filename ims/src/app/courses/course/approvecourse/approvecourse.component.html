@@ -1,0 +1,48 @@
+<div class="formMargin">
+    <app-spinnercomp *ngIf="activeSpinner"></app-spinnercomp>
+    <div *ngIf="!activeSpinner">
+        <div class="col-md-1"></div>
+        <div class="container col-md-10">
+            <h4 align="center" style="color:#6d7fcc;">Approve Course!</h4>
+            <table class="table table-striped table-responsive" style="font-size: 14px">
+                <thead class="thead-inverse">
+                    <tr style="color:#6d7fcc;">
+                        <th><input type="checkbox" (click)="selectAll()">Select All</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Fee</th>
+                        <th>Status</th>
+                        <th>Approved</th>
+                        <th><button type="button" class="btn btn-success" style="font-size: 12px"
+                                [disabled]="!checkEmptyArray()" (click)="approvePermanent()">Approve</button></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let course of courseDetailsArray">
+                        <ng-container *ngIf="isAllChecked">
+                            <td> <input type="checkbox" checked disabled /></td>
+                        </ng-container>
+                        <ng-container *ngIf="!isAllChecked">
+                            <td> <input type="checkbox" name="course.courseId" [id]="course.courseId"
+                                    (click)="insertIntoApproveArray(course.courseId)" ngDefaultControl /></td>
+                        </ng-container>
+
+                        <td>{{course.courseId}}</td>
+                        <td>{{course.courseName}}</td>
+                        <td>{{course.courseFee}}</td>
+                        <td>{{course.status}}</td>
+                        <td>{{course.approveStatus}}</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr *ngIf="isNoUnapprovedCourse()">
+                        <h6 align="center">No Unapproved courses.. All approved.</h6>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+
+    </div>
