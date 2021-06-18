@@ -18,7 +18,7 @@ export class ActivecourseComponent implements OnInit {
   courseDetailsArray: CourseDetails[] = [];
   p: number = 0;
   isPreviouslySearchPerformed = false;
-  isPaginate: boolean = false;
+  static isPaginate: boolean = true;
   constructor(private courseService: CourseserviceService, private route: Router) { }
 
   ngOnInit(): void {
@@ -29,7 +29,11 @@ export class ActivecourseComponent implements OnInit {
       this.performActiveSearch(ActivecourseComponent.staticSearchText);
   }
   reversePaginate() {
-    this.isPaginate = !this.isPaginate;
+    ActivecourseComponent.isPaginate = !ActivecourseComponent.isPaginate;
+  }
+  getIsPaginate()
+  {
+    return ActivecourseComponent.isPaginate;
   }
   getIsActiveSearch() {
     return ActivecourseComponent.activeSearch;
