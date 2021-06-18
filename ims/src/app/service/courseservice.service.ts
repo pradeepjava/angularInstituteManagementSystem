@@ -28,8 +28,8 @@ export class CourseserviceService {
       courseToUpdate)
   }
 
-  getAllActiveCourse() {
-    return this.http.get<CourseDetails[]>(`${API_URL}/courseDetails/active`);
+  getAllActiveCourse(courseType:string) {
+    return this.http.get<CourseDetails[]>(`${API_URL}/courseDetails/${courseType}`);
   }
 
   deleteCourse(id: number) {

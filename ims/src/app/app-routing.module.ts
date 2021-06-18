@@ -18,12 +18,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'aboutus', component: AboutusComponent },
   { path: 'courses', component: CoursesComponent },
-  {path:'loginSuccess', component: LoginSuccessComponent, canActivate:[RouteGuardService]},
-  { path: 'logout', component: LogoutComponent, canActivate:[RouteGuardService]},
-  {path: 'addCourse', component:AddcourseComponent, canActivate:[RouteGuardService]},
-  {path:'activeCourse',component:ActivecourseComponent, canActivate:[RouteGuardService]},
-  {path:'course/:id', component:EditCourseComponent, canActivate:[RouteGuardService]},
-  { path: 'error', component: ErrorComponent},
+  { path: 'loginSuccess', component: LoginSuccessComponent, canActivate: [RouteGuardService] },
+  { path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService] },
+  { path: 'addCourse', component: AddcourseComponent, canActivate: [RouteGuardService] },
+  { path: 'activeCourse', component: ActivecourseComponent, canActivate: [RouteGuardService] },
+  { path: 'course/:id', component: EditCourseComponent, canActivate: [RouteGuardService] },
+  { path: 'error', component: ErrorComponent },
   { path: '**', component: ErrorComponent }
 ];
 
