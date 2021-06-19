@@ -32,6 +32,7 @@ import { ActivecourseComponent } from './courses/course/activecourse/activecours
 import { EditCourseComponent } from './courses/course/edit-course/edit-course.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ApprovecourseComponent } from './courses/course/approvecourse/approvecourse.component';
+import { CoursedescriptionComponent } from './courses/course/coursedescription/coursedescription.component';
 
 
 
@@ -43,7 +44,7 @@ import { ApprovecourseComponent } from './courses/course/approvecourse/approveco
     SidebarwelcomemsgComponent, SidebarComponent,
     SidebarsuperviserComponent, SidebarteacherComponent,
     MainmenubarComponent, CollapseComponent, DisplaycontentComponent,
-    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent, CourseComponent, AddcourseComponent, SpinnercompComponent, ActivecourseComponent, EditCourseComponent, ApprovecourseComponent
+    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent, CourseComponent, AddcourseComponent, SpinnercompComponent, ActivecourseComponent, EditCourseComponent, ApprovecourseComponent, CoursedescriptionComponent
     
   ],
   imports: [

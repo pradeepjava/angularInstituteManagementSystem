@@ -4,6 +4,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { ActivecourseComponent } from './courses/course/activecourse/activecourse.component';
 import { AddcourseComponent } from './courses/course/addcourse/addcourse.component';
 import { ApprovecourseComponent } from './courses/course/approvecourse/approvecourse.component';
+import { CoursedescriptionComponent } from './courses/course/coursedescription/coursedescription.component';
 import { EditCourseComponent } from './courses/course/edit-course/edit-course.component';
 import { CoursesComponent } from './courses/courses.component';
 import { HomedisplayComponent } from './displaycontent/homedisplay/homedisplay.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'activeCourse', component: ActivecourseComponent, canActivate: [RouteGuardService] },
   { path: 'course/:id', component: EditCourseComponent, canActivate: [RouteGuardService] },
   { path: 'approveCourse', component: ApprovecourseComponent, canActivate: [RouteGuardService] },
+  { path: 'addCourseDescription', component: CoursedescriptionComponent, canActivate: [RouteGuardService] },
   { path: 'error', component: ErrorComponent },
   { path: '**', component: ErrorComponent }
 ];
