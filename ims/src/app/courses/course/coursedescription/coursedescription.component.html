@@ -1,40 +1,249 @@
-<div class="container row">
-    <div class="col-md-12">
-        <h1>Upload Image</h1>
-    </div>
-</div>
+<div class="formMargin">
 
-<div class="container row">
-    <div class="col-md-6">
-        <input type="file" (change)="onFileChanged($event)">
+    <div class="container row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8" align="center">
+            <h3 style="color:#6d7fcc;">Add/Edit Course Description</h3>
 
-    </div>
-    <div class="col-md-6">
-        <input type="button" (click)="onUpload()" value="upload">
-    </div>
-</div>
-<hr />
-<div class="container row">
-    <div class="col-md-12">
-        <div *ngIf=message>{{message}}</div>
-    </div>
-</div>
-
-<div class="container row">
-    <div class="col-md-6">
-        <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imgId"
-            name="name" />
-    </div>
-    <div class="col-md-6">
-        <input type="button" (click)="getImage()" value="Get Image">
-
-    </div>
-</div>
-
-<div class="container row">
-    <div class="col-md-12">
-        <div *ngIf=retrievedImage>
-            <img [src]="retrievedImage">
+        </div>
+        <div class="col-md-2">
         </div>
     </div>
 </div>
+<hr />
+<div style="margin-top:25px;">
+    <div class="container row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+            <div class="container row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-10">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input type="text" name="searchText" id="searchText" class="form-control" size=30
+                                style="font-family: FontAwesome; font-size: 20px;"
+                                placeholder="&#xf002; CourseId or CourseName..." [(ngModel)]="searchText" required>
+                            &nbsp;
+                            <div>
+                                <button class="btn btn-success" id="checkButton" name="checkButton" type="button"
+                                    (click)="performSearch()" [disabled]="isEmptyText()">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="d-flex justify-content-center formMargin" *ngIf="activeSpinner">
+                        <app-spinnercomp></app-spinnercomp>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
+</div>
+
+<div class="container row" style="margin-top: 20px;">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-11">
+
+        <div *ngIf="!activeSpinner && !isEmptyCourseFound()">
+            <table class="table table-striped table-inverse table-responsive">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>CoureseId</th>
+                        <th>CourseName</th>
+                        <th>Fee</th>
+                        <th>Status</th>
+                        <th>App.Status</th>
+                        <th>App.Date</th>
+                        <th>Details Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let course of courseDetailsArray">
+                        <td>{{course.courseId}}</td>
+                        <td>{{course.courseName}}</td>
+                        <td>{{course.courseFee}}</td>
+                        <td>{{course.status}}</td>
+                        <td>{{course.approveStatus}}</td>
+                        <td>{{course.approveDate|date}} </td>
+                        <ng-container *ngIf="course.descriptionid!=0">
+                            <td>Yes&nbsp;<button type="button" class="btn btn-info" id="course.courseId"
+                                (click)="openForView(content,course.courseId,course.descriptionid)">View</button></td>
+                            <td><button type="button" class="btn btn-warning" id="course.courseId"
+                                    (click)="openForAddEdit(content,course.courseId)">Edit</button></td>
+                        </ng-container>
+                        <ng-container *ngIf="course.descriptionid==0">
+                            <td>No</td>
+                            <td>
+
+                                <button type="button" class="btn btn-primary" id="course.courseId"
+                                    (click)="openForAddEdit(content,course.courseId)">Add
+
+                                </button>
+                            </td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="isEmptyCourseFound() && isPreviouslySearchPerformed && !activeSpinner" class="alert alert-danger">
+            <p>No Course Found. Try Again.</p>
+        </div>
+    </div>
+</div>
+<!--  model-->
+
+<!-- Button trigger modal -->
+
+
+
+<!---->
+
+<ng-template #content let-modal>
+
+    <div class="modal-header">
+        <h4 class="mode" id="modal-basic-title" style="color:#6d7fcc;" *ngIf="addEditMode">
+            Create and Attach details for courseId: {{courseIdToPerformEdit}}
+        </h4>
+        <h4 class="mode" id="modal-basic-title" style="color:#6d7fcc;" *ngIf="viewMode">
+           Sample view
+        </h4>
+        <button type="button" class="close" aria-label="Close" (click)="dismissModel()">
+
+            <span aria-hidden="true">
+                ×
+            </span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <ng-container *ngIf="viewMode">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <br>
+                <div class="card" style="width: 18rem;">
+                    <div *ngIf=retrievedImage>
+                        <img class="card-img-top" [src]="retrievedImage" alt="Card image cap">
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title">Id: {{courseIdToPerformEdit}}</h5>
+                        <p class="card-text">{{displayCourseDescriptionForEdit.keyfeature}}</p>
+                        <h5 class="card-title">Duration: {{displayCourseDescriptionForEdit.duration}}</h5>
+                        <!-- <a href="#" class="btn btn-primary">Register This Course</a> -->
+                    </div>
+                </div>
+            </div>
+
+        </ng-container>
+        <ng-container *ngIf="addEditMode">
+            <button type="button" class="btn btn-warning" id="editDesc" (click)="getUserResponse('use existing')">Use
+                Existing</button> &nbsp;&nbsp;
+            <button type="button" class="btn btn-primary" id="createDesc" (click)="getUserResponse('create new')">Create
+                New</button> &nbsp;&nbsp;
+            <ng-container *ngIf="isCreateNew==='use existing' && !activeSpinner">
+                <br>
+                <br>
+                <label>Available Description</label><br>
+
+                <select name="descriptionselect" id="descriptionselect" [(ngModel)]="selectedCourseDescription"
+                    (change)="displaySampleWithImageDescription()" required>
+
+                    <option *ngFor="let description of allCourseDescription">
+                        <b>Id:</b>&nbsp;{{description.descriptionid}}&nbsp;&nbsp;<b>Key:</b>&nbsp;{{trimDescription(description.keyfeature)}}
+                    </option>
+                </select>
+                <div *ngIf="!isLengthOfDescriptionZero()">
+                    <button type="button" class="btn btn-success"
+                        (click)="updateCourseDetailsForDescription(courseIdToPerformEdit,getIdOfDescriptionFromString(selectedCourseDescription))">Attach
+                        Attach this With course Id {{courseIdToPerformEdit}} </button>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <br>
+                        <div class="card" style="width: 18rem;">
+                            <div *ngIf=retrievedImage>
+                                <img class="card-img-top" [src]="retrievedImage" alt="Card image cap">
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title">Id: {{courseIdToPerformEdit}}</h5>
+                                <p class="card-text">{{displayCourseDescriptionForEdit.keyfeature}}</p>
+                                <h5 class="card-title">Duration: {{displayCourseDescriptionForEdit.duration}}</h5>
+                                <!-- <a href="#" class="btn btn-primary">Register This Course</a> -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </ng-container>
+
+            <ng-container *ngIf="isCreateNew==='create new'">
+                <div *ngIf="generatedCourseDescription.length==0">
+                    <form #description="ngForm" (ngSubmit)="onSubmit(description)">
+                        <div class="form-group">
+                            <label for="Speciality">Description</label>
+                            <textarea class="form-control" name="keyFeature" id="keyFeature" rows="3"
+                                [(ngModel)]="keyFeature" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="Duration">Duration</label>
+                            <input type="text" class="form-control" name="duration" id="duration" [(ngModel)]="duration"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imagelabel">Image (jpg and png allowed. Limit 10MB)</label>
+                            <input type="file" id="image" name="image" (change)="onFileChanged($event)" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" id="saveDesc" name="saveDesc">Save</button>
+                        </div>
+                    </form>
+                    <div *ngIf="!isValidForm" class="alert alert-danger">
+                        <p>{{errorMessageToDisplay}}</p>
+                    </div>
+                </div>
+
+                <div *ngIf="generatedCourseDescription.length!=0">
+                    <p>Description generated with Id: {{descriptionId}}</p>
+                    <button type="button" class="btn btn-link"
+                        (click)="displaySampleWithImage(generatedCourseDescription[0].imgid)">Sample
+                        View</button>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-success"
+                        (click)="updateCourseDetailsForDescription(courseIdToPerformEdit,generatedCourseDescription[0].descriptionid)">Attach
+                        this With course Id {{courseIdToPerformEdit}} </button>
+                    <!-- book display-->
+                    <div *ngIf="displaySample">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <br>
+                            <div class="card" style="width: 18rem;">
+                                <div *ngIf=retrievedImage>
+                                    <img class="card-img-top" [src]="retrievedImage" alt="Card image cap">
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Id: {{courseIdToPerformEdit}}</h5>
+                                    <p class="card-text">{{generatedCourseDescription[0].keyfeature}}</p>
+                                    <h5 class="card-title">Duration: {{generatedCourseDescription[0].duration}}</h5>
+                                    <!-- <a href="#" class="btn btn-primary">Register This Course</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- book display-->
+                </div>
+            </ng-container>
+            <div class="modal-footer">
+            </div>
+
+            <!-- <button type="button"
+                class="btn btn-outline-dark"
+                (click)="modal.close('Save click')">
+                Save
+            </button> -->
+        </ng-container>
+    </div>
+
+
+</ng-template>

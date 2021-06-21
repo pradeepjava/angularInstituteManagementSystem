@@ -14,7 +14,7 @@ export class EditCourseComponent implements OnInit {
   displayError: boolean = false;
   spinn: boolean = false;
   id: number = 0;
-  public courseDetails: CourseDetails = new CourseDetails(0, 'a', 0, 'a', 'a', new Date() );
+  public courseDetails: CourseDetails = new CourseDetails(0, 'a', 0, 'a', 'a', new Date(),0);
   activeSpinner: boolean = false;
   constructor(private courseService: CourseserviceService, 
     private activateRoute: ActivatedRoute, private router: Router) { }
@@ -29,7 +29,7 @@ export class EditCourseComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.spinn = true;
-      let courseDetailsToUpdate = new CourseDetails(this.courseDetails.courseId, form.value.courseName, form.value.courseFee, form.value.status, this.courseDetails.approveStatus, new Date())
+      let courseDetailsToUpdate = new CourseDetails(this.courseDetails.courseId, form.value.courseName, form.value.courseFee, form.value.status, this.courseDetails.approveStatus, new Date(),0)
       this.courseService.updateCourseInDB(courseDetailsToUpdate).subscribe(
         data => {
           this.spinn = false;

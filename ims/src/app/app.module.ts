@@ -33,6 +33,7 @@ import { EditCourseComponent } from './courses/course/edit-course/edit-course.co
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ApprovecourseComponent } from './courses/course/approvecourse/approvecourse.component';
 import { CoursedescriptionComponent } from './courses/course/coursedescription/coursedescription.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -52,7 +53,8 @@ import { CoursedescriptionComponent } from './courses/course/coursedescription/c
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [LoginComponent,HttpClient,HttpClientModule,ConstantProvider,
     {provide:HTTP_INTERCEPTORS,useClass:MyhttpintereptorService,multi:true}
