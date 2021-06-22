@@ -46,6 +46,12 @@ export class CoursedescriptionComponent implements OnInit {
   ngOnInit(): void {
   }
   trimDescription(text: string) {
+    if (text.length > 50) {
+      return text.substring(0, 50);
+    }
+    return text;
+  }
+  trimDescription25(text: string) {
     if (text.length > 25) {
       return text.substring(0, 25);
     }
@@ -95,7 +101,7 @@ export class CoursedescriptionComponent implements OnInit {
       this.courseService.getDescriptionById(data.descriptionid).subscribe(data=>{
         this.displayCourseDescriptionForEdit = data;
         this.displaySampleWithImage(data.imgid);
-        console.log(data.imgid)
+       
       })
     })
   }

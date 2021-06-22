@@ -22,13 +22,15 @@ export class CourseDescription {
   }
 }
 
+export class ImageDetails {
+  constructor(public imageid: number, public name: string, public type: string, public picbyte: []) {
+  }
+}
 export class CompleteCourseDetails {
-  public imageData: any;
   constructor(
     public courseDescription: CourseDescription,
     public courseDetails: CourseDetails,
-    private picByte: any) {
-    this.imageData = 'data:image/jpeg;base64,' + this.picByte;
+    public imageDetails: ImageDetails) {
   }
 }
 
@@ -48,6 +50,9 @@ export class CourseserviceService {
   }
   getCompleteCourseById(id: number) {
     return this.http.get<CourseDetails>(`${API_URL}/courseDetails/completeCourse/${id}`);
+  }
+  getAllCompleteCourse() {
+    return this.http.get<CompleteCourseDetails[]>(`${API_URL}/courseDetails/completeCourse/All`);
   }
 
   getAllCourseDescription() {

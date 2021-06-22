@@ -123,7 +123,7 @@
 
                     <div class="card-body">
                         <h5 class="card-title">Id: {{courseIdToPerformEdit}}</h5>
-                        <p class="card-text">{{displayCourseDescriptionForEdit.keyfeature}}</p>
+                        <p class="card-text">{{trimDescription(displayCourseDescriptionForEdit.keyfeature)}}</p>
                         <h5 class="card-title">Duration: {{displayCourseDescriptionForEdit.duration}}</h5>
                         <!-- <a href="#" class="btn btn-primary">Register This Course</a> -->
                     </div>
@@ -145,7 +145,7 @@
                     (change)="displaySampleWithImageDescription()" required>
 
                     <option *ngFor="let description of allCourseDescription">
-                        <b>Id:</b>&nbsp;{{description.descriptionid}}&nbsp;&nbsp;<b>Key:</b>&nbsp;{{trimDescription(description.keyfeature)}}
+                        <b>Id:</b>&nbsp;{{description.descriptionid}}&nbsp;&nbsp;<b>Key:</b>&nbsp;{{trimDescription25(description.keyfeature)}}
                     </option>
                 </select>
                 <div *ngIf="!isLengthOfDescriptionZero()">
@@ -161,7 +161,7 @@
 
                             <div class="card-body">
                                 <h5 class="card-title">Id: {{courseIdToPerformEdit}}</h5>
-                                <p class="card-text">{{displayCourseDescriptionForEdit.keyfeature}}</p>
+                                <p class="card-text">{{trimDescription(displayCourseDescriptionForEdit.keyfeature)}}</p>
                                 <h5 class="card-title">Duration: {{displayCourseDescriptionForEdit.duration}}</h5>
                                 <!-- <a href="#" class="btn btn-primary">Register This Course</a> -->
                             </div>
@@ -217,7 +217,7 @@
 
                                 <div class="card-body">
                                     <h5 class="card-title">Id: {{courseIdToPerformEdit}}</h5>
-                                    <p class="card-text">{{generatedCourseDescription[0].keyfeature}}</p>
+                                    <p class="card-text">{{trimDescription(generatedCourseDescription[0].keyfeature)}}</p>
                                     <h5 class="card-title">Duration: {{generatedCourseDescription[0].duration}}</h5>
                                     <!-- <a href="#" class="btn btn-primary">Register This Course</a> -->
                                 </div>

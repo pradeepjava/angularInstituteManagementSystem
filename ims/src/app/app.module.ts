@@ -45,8 +45,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SidebarwelcomemsgComponent, SidebarComponent,
     SidebarsuperviserComponent, SidebarteacherComponent,
     MainmenubarComponent, CollapseComponent, DisplaycontentComponent,
-    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent, CourseComponent, AddcourseComponent, SpinnercompComponent, ActivecourseComponent, EditCourseComponent, ApprovecourseComponent, CoursedescriptionComponent
-    
+    HomedisplayComponent, FooterComponent,
+    LoginComponent, LogoutComponent, 
+    AboutusComponent, CoursesComponent, 
+    ErrorComponent, LoginSuccessComponent, CourseComponent, 
+    AddcourseComponent, SpinnercompComponent, ActivecourseComponent, 
+    EditCourseComponent, ApprovecourseComponent, CoursedescriptionComponent
   ],
   imports: [
     NgxPaginationModule,

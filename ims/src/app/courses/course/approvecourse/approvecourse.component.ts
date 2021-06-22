@@ -34,9 +34,7 @@ export class ApprovecourseComponent implements OnInit {
     this.courseService.getCourseById(id).subscribe(data => {
       this.courseService.getDescriptionById(data.descriptionid).subscribe(data => {
         this.displayCourseDescriptionForEdit = data;
-
         this.getImage(data.imgid);
-        console.log(data.imgid)
       })
     })
   }
@@ -82,7 +80,6 @@ export class ApprovecourseComponent implements OnInit {
           tempCourseDetails.push(details);
         }
       }
-      console.log(tempCourseDetails);
       this.courseService.approveCourseInDB(tempCourseDetails).subscribe(
         data => {
           this.activeSpinner = false;
@@ -140,6 +137,13 @@ export class ApprovecourseComponent implements OnInit {
         this.activeSpinner = false;
       }
     );
+  }
+
+  trimDescription(text: string) {
+    if (text.length > 50) {
+      return text.substring(0, 50);
+    }
+    return text;
   }
 
   getImage(id: number) {
