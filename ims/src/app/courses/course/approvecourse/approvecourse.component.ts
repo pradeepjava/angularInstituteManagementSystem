@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CourseDetails, CourseserviceService } from 'src/app/service/courseservice.service';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CourseDescription, CourseDetails, CourseserviceService } from 'src/app/service/courseservice.service';
 
 @Component({
   selector: 'app-approvecourse',
@@ -12,9 +13,33 @@ export class ApprovecourseComponent implements OnInit {
   courseDetailsArray: CourseDetails[] = [];
   isAllChecked = false;
   approveArray: number[] = [];
-  constructor(private courseService: CourseserviceService, private router: Router) { }
+  closeResult = '';
+  retrievedImage: any;
+  base64Data: any;
+  retrieveResonse: any;
+  message: string = '';
+  imageName: any;
+  imgId: number = 0;
+  courseIdToPerformEdit:number=0
+  displayCourseDescriptionForEdit: CourseDescription = new CourseDescription(0, '', '', 0);
+  constructor(private courseService: CourseserviceService, private router: Router, private modalService: NgbModal) { }
 
+  dismissModel() {
+    this.modalService.dismissAll();
+  }
 
+  displayForView(content:any, id: number) {
+    this.courseIdToPerformEdit=id;
+    this.openModel(content);
+    this.courseService.getCourseById(id).subscribe(data => {
+      this.courseService.getDescriptionById(data.descriptionid).subscribe(data => {
+        this.displayCourseDescriptionForEdit = data;
+
+        this.getImage(data.imgid);
+        console.log(data.imgid)
+      })
+    })
+  }
 
   isNoUnapprovedCourse() {
     this.courseDetailsArray.length == 0;
@@ -53,8 +78,7 @@ export class ApprovecourseComponent implements OnInit {
       this.activeSpinner = true;
       let tempCourseDetails: CourseDetails[] = [];
       for (let details of this.courseDetailsArray) {
-       if(this.isAlreadyPresent(this.approveArray, details.courseId))
-        {
+        if (this.isAlreadyPresent(this.approveArray, details.courseId)) {
           tempCourseDetails.push(details);
         }
       }
@@ -86,6 +110,17 @@ export class ApprovecourseComponent implements OnInit {
   checkEmptyArray() {
     return this.approveArray.length > 0;
   }
+
+  getAvailableDescriptionCourse(ar: CourseDetails[]): CourseDetails[] {
+    let courseArray: CourseDetails[] = [];
+    for (let course of ar) {
+      if (course.descriptionid != 0) {
+        courseArray.push(course);
+      }
+    }
+    return courseArray;
+  }
+
   getUnapprovedCourse(courseToDisplay: string) {
     this.activeSpinner = true;
     this.courseService.getAllActiveCourse(courseToDisplay).subscribe(
@@ -95,8 +130,9 @@ export class ApprovecourseComponent implements OnInit {
         courseArray.sort((a, b) => {
           return a.courseId - b.courseId;
         })
-        this.courseDetailsArray=[];
-        this.courseDetailsArray = courseArray;
+
+        this.courseDetailsArray = [];
+        this.courseDetailsArray = this.getAvailableDescriptionCourse(courseArray);
         this.activeSpinner = false;
       },
       error => {
@@ -104,5 +140,40 @@ export class ApprovecourseComponent implements OnInit {
         this.activeSpinner = false;
       }
     );
+  }
+
+  getImage(id: number) {
+    this.courseService.getImageById(id)
+      .subscribe(
+        res => {
+          this.retrieveResonse = res;
+          this.base64Data = this.retrieveResonse.picbyte;
+          this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+        },
+        error => {
+          console.log(error)
+        }
+      );
+  }
+
+  openModel(content: any) {
+    this.modalService.open(content,
+      { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+        (reason) => {
+          this.closeResult =
+            `Dismissed ${this.getDismissReason(reason)}`;
+        });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 }

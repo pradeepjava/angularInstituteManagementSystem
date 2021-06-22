@@ -13,6 +13,7 @@
                         <th>Fee</th>
                         <th>Status</th>
                         <th>Approved</th>
+                        <th>Description</th>
                         <th><button type="button" class="btn btn-success" style="font-size: 12px"
                                 [disabled]="!checkEmptyArray()" (click)="approvePermanent()">Approve</button></th>
 
@@ -34,6 +35,7 @@
                         <td>{{course.courseFee}}</td>
                         <td>{{course.status}}</td>
                         <td>{{course.approveStatus}}</td>
+                        <td><button type="button" class="btn btn-info" id="course.courseId"(click)="displayForView(content,course.courseId)">View</button></td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr *ngIf="isNoUnapprovedCourse()">
@@ -46,3 +48,37 @@
         <div class="col-md-1"></div>
 
     </div>
+
+    <ng-template #content let-modal>
+        <div class="modal-header">
+
+            <h4 class="mode" id="modal-basic-title" style="color:#6d7fcc;">
+                Sample view
+            </h4>
+            <button type="button" class="close" aria-label="Close" (click)="dismissModel()">
+
+                <span aria-hidden="true">
+                    ×
+                </span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <br>
+                <div class="card" style="width: 18rem;">
+                    <div *ngIf=retrievedImage>
+                        <img class="card-img-top" [src]="retrievedImage" alt="Card image cap">
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title">Id: {{courseIdToPerformEdit}}</h5>
+                        <p class="card-text">{{displayCourseDescriptionForEdit.keyfeature}}</p>
+                        <h5 class="card-title">Duration: {{displayCourseDescriptionForEdit.duration}}</h5>
+                        <!-- <a href="#" class="btn btn-primary">Register This Course</a> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ng-template>

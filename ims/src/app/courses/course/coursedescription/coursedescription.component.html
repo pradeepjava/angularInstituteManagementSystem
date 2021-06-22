@@ -72,7 +72,7 @@
                         <td>{{course.approveDate|date}} </td>
                         <ng-container *ngIf="course.descriptionid!=0">
                             <td>Yes&nbsp;<button type="button" class="btn btn-info" id="course.courseId"
-                                (click)="openForView(content,course.courseId,course.descriptionid)">View</button></td>
+                                (click)="openForView(content,course.courseId)">View</button></td>
                             <td><button type="button" class="btn btn-warning" id="course.courseId"
                                     (click)="openForAddEdit(content,course.courseId)">Edit</button></td>
                         </ng-container>
@@ -95,13 +95,6 @@
         </div>
     </div>
 </div>
-<!--  model-->
-
-<!-- Button trigger modal -->
-
-
-
-<!---->
 
 <ng-template #content let-modal>
 
@@ -237,11 +230,6 @@
             <div class="modal-footer">
             </div>
 
-            <!-- <button type="button"
-                class="btn btn-outline-dark"
-                (click)="modal.close('Save click')">
-                Save
-            </button> -->
         </ng-container>
     </div>
 

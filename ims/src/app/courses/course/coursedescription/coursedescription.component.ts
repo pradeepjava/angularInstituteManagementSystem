@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
 import { CourseDescription, CourseDetails, CourseserviceService } from 'src/app/service/courseservice.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
-import { isInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
-
 
 @Component({
   selector: 'app-coursedescription',
@@ -44,7 +41,7 @@ export class CoursedescriptionComponent implements OnInit {
   courseIdToPerformView = 0;
   courseDescriptionToPerformView = 0;
 
-  constructor(private httpClient: HttpClient, private courseService: CourseserviceService, private modalService: NgbModal) { }
+  constructor( private courseService: CourseserviceService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -166,7 +163,7 @@ export class CoursedescriptionComponent implements OnInit {
     return form.value.keyFeature.trim().length > 0 && form.value.duration.trim().length > 0 && this.selectedFile.name.trim().length > 0;
 
   }
-  openForView(content: any, id: number, descriptionId: number) {
+  openForView(content: any, id: number) {
     this.addEditMode = false;
     this.viewMode = true;
     this.openModel(content);
