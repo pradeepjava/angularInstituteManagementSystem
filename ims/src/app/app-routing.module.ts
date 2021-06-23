@@ -7,6 +7,7 @@ import { ApprovecourseComponent } from './courses/course/approvecourse/approveco
 import { CoursedescriptionComponent } from './courses/course/coursedescription/coursedescription.component';
 import { EditCourseComponent } from './courses/course/edit-course/edit-course.component';
 import { CoursesComponent } from './courses/courses.component';
+import { DisplaydetailsComponent } from './courses/displaydetails/displaydetails.component';
 import { HomedisplayComponent } from './displaycontent/homedisplay/homedisplay.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginSuccessComponent } from './login-success/login-success.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'aboutus', component: AboutusComponent },
   { path: 'courses', component: CoursesComponent },
+  {path: 'displayDetails', component:DisplaydetailsComponent},
   { path: 'loginSuccess', component: LoginSuccessComponent, canActivate: [RouteGuardService] },
   { path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService] },
   { path: 'addCourse', component: AddcourseComponent, canActivate: [RouteGuardService] },

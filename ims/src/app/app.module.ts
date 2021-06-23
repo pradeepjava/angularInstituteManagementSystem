@@ -34,6 +34,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ApprovecourseComponent } from './courses/course/approvecourse/approvecourse.component';
 import { CoursedescriptionComponent } from './courses/course/coursedescription/coursedescription.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DisplaydetailsComponent } from './courses/displaydetails/displaydetails.component';
 
 
 
@@ -50,7 +51,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AboutusComponent, CoursesComponent, 
     ErrorComponent, LoginSuccessComponent, CourseComponent, 
     AddcourseComponent, SpinnercompComponent, ActivecourseComponent, 
-    EditCourseComponent, ApprovecourseComponent, CoursedescriptionComponent
+    EditCourseComponent, ApprovecourseComponent, CoursedescriptionComponent, DisplaydetailsComponent
   ],
   imports: [
     NgxPaginationModule,

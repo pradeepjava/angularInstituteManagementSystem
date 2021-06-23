@@ -40,8 +40,9 @@ export class CoursedescriptionComponent implements OnInit {
   viewMode: boolean = false;
   courseIdToPerformView = 0;
   courseDescriptionToPerformView = 0;
+  feeToDisplay: number = 0;
 
-  constructor( private courseService: CourseserviceService, private modalService: NgbModal) { }
+  constructor(private courseService: CourseserviceService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -96,12 +97,12 @@ export class CoursedescriptionComponent implements OnInit {
   }
 
   displayForView(id: number) {
-   
-    this.courseService.getCourseById(id).subscribe(data=>{
-      this.courseService.getDescriptionById(data.descriptionid).subscribe(data=>{
+
+    this.courseService.getCourseById(id).subscribe(data => {
+      this.courseService.getDescriptionById(data.descriptionid).subscribe(data => {
         this.displayCourseDescriptionForEdit = data;
         this.displaySampleWithImage(data.imgid);
-       
+
       })
     })
   }
@@ -169,13 +170,16 @@ export class CoursedescriptionComponent implements OnInit {
     return form.value.keyFeature.trim().length > 0 && form.value.duration.trim().length > 0 && this.selectedFile.name.trim().length > 0;
 
   }
-  openForView(content: any, id: number) {
+  openForView(content: any, id: number,fee:number) {
+    this.courseIdToPerformEdit = id;
+    this.feeToDisplay=fee;
     this.addEditMode = false;
     this.viewMode = true;
     this.openModel(content);
-  this.displayForView(id)
+    this.displayForView(id)
   }
-  openForAddEdit(content: any, id: number) {
+  openForAddEdit(content: any, id: number,fee:number) {
+    this.feeToDisplay=fee;
     this.addEditMode = true;
     this.viewMode = false;
     this.courseIdToPerformEdit = id;
