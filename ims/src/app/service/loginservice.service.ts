@@ -13,7 +13,6 @@ export class LoginserviceService {
   constructor(private http: HttpClient) { }
 
   executeJWTAuthenticationService(username: string, password: string) {
-
     return this.http.post<any>(
       `${API_URL}/authenticate`, {
       username,

@@ -13,10 +13,12 @@
         <li> 
             <a href="#courseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Courses</a>
             <ul class="collapse list-unstyled" id="courseSubmenu">
-                <li><a class="btn-dark" href="#">Active Course</a></li>
-                <li><a class="btn-dark" href="#">Archive Course</a></li>
-                <li><a class="btn-dark" href="#">Add Course</a></li>
-                <li><a class="btn-dark" href="#">Approve Course</a></li>
+                <li><a class="btn-dark" routerLink='/addCourse'>Add Course</a></li>
+                <li><a class="btn-dark" routerLink='/addCourseDescription'>Add Course Description</a></li>
+                <li><a class="btn-dark" routerLink='/activeCourse' [queryParams]="{courseType:'active'}">Display Active Course</a></li>
+                <li><a class="btn-dark" routerLink='/activeCourse' [queryParams]="{courseType:'inactive'}">Display Inactive Course</a></li>
+                <li><a class="btn-dark" routerLink='/approveCourse'>Approve Course</a></li>
+              
             </ul>
         </li>
 

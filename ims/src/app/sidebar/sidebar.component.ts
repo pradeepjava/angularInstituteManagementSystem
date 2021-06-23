@@ -18,7 +18,6 @@ export class SidebarComponent implements OnInit {
     let role = localStorage.getItem(USERROLE)
     if (role != null) {
       this.sidebarDecider= role;
-      console.log(this.sidebarDecider)
     }
     return ''
   }

@@ -1,1 +1,20 @@
-<p>courses works!</p>
+<div class="formMargin">
+    <app-spinnercomp *ngIf="activeSpinner"></app-spinnercomp>
+    <div *ngIf="!activeSpinner">
+
+        <!-- <div class="col-lg-4 col-md-6 mb-4" *ngFor="let details of completeApprovedCourse"> -->
+        
+            <div class="card" style="width: 18rem; display:inline-flex; margin:5px;" *ngFor="let details of completeApprovedCourse">
+                <img class="card-img-top" [src]="getImage(details)" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Id: {{details.courseDetails.courseId}}</h5>
+                    <p class="card-text"><a class="btn-dark" routerLink='/displayDetails' [queryParams]="{id:details.courseDetails.courseId}">{{trimDescription(details.courseDescription.keyfeature)}}</a></p>
+                    <h5 class="card-title">Duration: {{details.courseDescription.duration}}</h5>
+                    <h6 class="card-title" style="color: blue;">Fee: &#x20B9; {{details.courseDetails.courseFee}}</h6>
+                    <a href="#" class="btn btn-success">Register This Course</a>
+                </div>
+            </div>
+        <!-- </div> -->
+
+    </div>
+</div>

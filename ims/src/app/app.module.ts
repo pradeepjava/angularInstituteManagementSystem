@@ -21,9 +21,21 @@ import { FormsModule } from '@angular/forms';
 import { LogoutComponent } from './logout/logout.component';
 import { ErrorComponent } from './error/error.component';
 import { LoginSuccessComponent } from './login-success/login-success.component';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ConstantProvider } from './constentProvider';
+import { CourseComponent } from './courses/course/course.component';
+import { AddcourseComponent } from './courses/course/addcourse/addcourse.component';
+import { SpinnercompComponent } from './shared/spinnercomp/spinnercomp.component';
+import { MyhttpintereptorService } from './service/myhttpintereptor.service';
+import { ActivecourseComponent } from './courses/course/activecourse/activecourse.component';
+import { EditCourseComponent } from './courses/course/edit-course/edit-course.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ApprovecourseComponent } from './courses/course/approvecourse/approvecourse.component';
+import { CoursedescriptionComponent } from './courses/course/coursedescription/coursedescription.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DisplaydetailsComponent } from './courses/displaydetails/displaydetails.component';
+
 
 
 @NgModule({
@@ -34,15 +46,24 @@ import { ConstantProvider } from './constentProvider';
     SidebarwelcomemsgComponent, SidebarComponent,
     SidebarsuperviserComponent, SidebarteacherComponent,
     MainmenubarComponent, CollapseComponent, DisplaycontentComponent,
-    HomedisplayComponent, FooterComponent, LoginComponent, LogoutComponent, AboutusComponent, CoursesComponent, ErrorComponent, LoginSuccessComponent
+    HomedisplayComponent, FooterComponent,
+    LoginComponent, LogoutComponent, 
+    AboutusComponent, CoursesComponent, 
+    ErrorComponent, LoginSuccessComponent, CourseComponent, 
+    AddcourseComponent, SpinnercompComponent, ActivecourseComponent, 
+    EditCourseComponent, ApprovecourseComponent, CoursedescriptionComponent, DisplaydetailsComponent
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
-  providers: [LoginComponent,HttpClient,HttpClientModule,ConstantProvider],
+  providers: [LoginComponent,HttpClient,HttpClientModule,ConstantProvider,
+    {provide:HTTP_INTERCEPTORS,useClass:MyhttpintereptorService,multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
